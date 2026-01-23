@@ -4,9 +4,13 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
-  "dependencies": {},
+  "dependencies": {
+    "astro": "^5.16.15"
+  },
   "devDependencies": {
     "typescript": "^5.5.3"
   },
