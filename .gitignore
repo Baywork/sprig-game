@@ -9,7 +9,7 @@ yarn-error.log*
 .pnp.js
 
 .vscode/*
-
+.astro
 .idea
 
 package-lock.json
