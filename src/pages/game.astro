@@ -1,7 +1,12 @@
 ---
-
-import Layout from "../layouts/Layout.astro";---
+import GameWindowComponent from "../components/GameWindowComponent";
+import Layout from "../layouts/Layout.astro";
+---
 
 <Layout>
+    <div class:list="m-auto flex content-center w-fit justify-center">
 
+        <GameWindowComponent width={1000} client:load/>
+
+    </div>
 </Layout>
