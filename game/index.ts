@@ -1,13 +1,8 @@
 import type {WebEngineAPI} from "sprig/web";
-import {drawScreen} from "./graphics";
-import MainMenu from "./ui/MainMenu.ts";
-//import {transformImageToBitmap} from "./graphics/bitmapHelper.ts";
-
 
 const LOOP_DELAY_MS: number = 50
 const SCREEN_WIDTH = 160
 const SCREEN_HEIGHT = 128
-
 
 export function start(api: WebEngineAPI) {
     const {

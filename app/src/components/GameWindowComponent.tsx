@@ -1,7 +1,7 @@
 "use client"
 import {webEngine} from "sprig/web"
 import {useEffect} from "react";
-import {start} from "../game";
+import {start} from "../../../game";
 import clsx from "clsx";
 
 export default function GameWindowComponent({width, className = ""}: { width: number, className?: string}) {
