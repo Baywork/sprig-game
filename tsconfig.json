@@ -1,8 +1,15 @@
 {
-  "extends": "astro/tsconfigs/base",
-  "esModuleInterop": true,
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "react"
-  }
+    "extends": [
+        "astro/tsconfigs/base"
+    ],
+    "esModuleInterop": true,
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "jsxImportSource": "react",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true
+    },
+    "exclude": [
+        "lib/**/*"
+    ]
 }

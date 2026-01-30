@@ -12,4 +12,6 @@ yarn-error.log*
 .astro
 .idea
 
+dist
+
 package-lock.json
