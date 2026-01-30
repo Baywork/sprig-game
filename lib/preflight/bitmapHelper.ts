@@ -51,4 +51,4 @@ async function transformImagesToStringBitmaps(src: string, target: string) {
     }
 }
 
-transformImagesToStringBitmaps("../../assets/sprites", "../../dist/sprites")
+// transformImagesToStringBitmaps("../../assets/sprites", "../../dist/sprites")
