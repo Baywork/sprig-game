@@ -11,7 +11,7 @@ export default function GameWindowComponent({width, className = ""}: { width: nu
     }, []);
 
     return (<>
-        <canvas className={clsx("border-2 w-fit", className)} width={width} height={(width * 4) / 5} id="canvas" tabIndex={0}></canvas>
+        <canvas className={clsx("border-2 w-fit", className)} width={width} height={width*0.8} id="canvas" tabIndex={0}></canvas>
     </>)
 
 }
