@@ -1,8 +1,6 @@
 {
   "name": "sprig_game",
   "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
   "scripts": {
     "dev": "npx astro dev",
     "build": "npx astro build",
@@ -15,6 +13,7 @@
     "@types/react-dom": "^19.2.3",
     "astro": "^5.16.15",
     "clsx": "^2.1.1",
+    "jimp": "^1.6.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "sprig": "^1.1.3",
