@@ -28,6 +28,9 @@ async function transformImageToBitmap(path: string) {
 
 function closestPaletteColor(rgba: { r: number, g: number, b: number, a: number }) {
     const {r, g, b, a} = rgba
+    if (a == 0) {
+        return {difference: 0, item: ['.', [0, 0, 0, 0]]}
+    }
     return palette.map((paletteItem) => {
         const colors = paletteItem[1]
         return {
@@ -51,4 +54,4 @@ async function transformImagesToStringBitmaps(src: string, target: string) {
     }
 }
 
-// transformImagesToStringBitmaps("../../assets/sprites", "../../dist/sprites")
+transformImagesToStringBitmaps("../../assets/sprites", "../../dist/sprites")
