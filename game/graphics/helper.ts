@@ -62,7 +62,7 @@ export function drawScreen(api: WebEngineAPI, string : string) {
         if (i % (SCREEN_SPRITE_DIMENSIONS[0]) > 0) newMap += ".".repeat(i % SCREEN_SPRITE_DIMENSIONS[0])
         newMap += addt
     }
-
+   
     setLegend(...newLegend)
     setMap(newMap)
 }
