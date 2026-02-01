@@ -5,7 +5,7 @@ export const SCREEN_SPRITE_DIMENSIONS = [10,8]
 export const AVAILABLE_LEGEND_KEYS = "0123456789qwrtyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMāēžščģūīņķļĀŠŽĒČĢŪĪŅĶĻ"
 
 
-export function renderPixelString(api: WebEngineAPI, string : string) {
+export function drawScreen(api: WebEngineAPI, string : string) {
     const {
         setLegend,
         bitmap,
