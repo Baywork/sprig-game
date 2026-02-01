@@ -56,7 +56,9 @@ export default class Screen {
 
         let yPos = y;
         for (const row of pixelMatrix) {
-            row.forEach((val, index) => this.setPixelAt(index + x, yPos, val))
+            row.forEach((val, index) => {
+                if (val !== ".") this.setPixelAt(index + x, yPos, val)
+            })
             yPos += 1
         }
     }
