@@ -44,6 +44,7 @@ async function transformImagesToStringBitmaps(src: string, target: string) {
     const fileNames: string[] = fs.lstatSync(src).isDirectory() ? fs.readdirSync(src) : [Path.basename(src)]
     const dirPath = fs.lstatSync(src).isDirectory() ? src : Path.dirname(src)
 
+    if (!fs.existsSync(Path.dirname(target))) fs.mkdirSync(Path.dirname(target))
     if (!fs.existsSync(target)) fs.mkdirSync(target)
 
     for (const fileName of fileNames) {
