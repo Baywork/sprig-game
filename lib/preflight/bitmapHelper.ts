@@ -40,7 +40,7 @@ function closestPaletteColor(rgba: { r: number, g: number, b: number, a: number 
     }).sort((a, b) => a.difference - b.difference)[0]
 }
 
-async function transformImagesToStringBitmaps(src: string, target: string) {
+export async function transformImagesToStringBitmaps(src: string, target: string) {
     const fileNames: string[] = fs.lstatSync(src).isDirectory() ? fs.readdirSync(src) : [Path.basename(src)]
     const dirPath = fs.lstatSync(src).isDirectory() ? src : Path.dirname(src)
 
@@ -54,5 +54,3 @@ async function transformImagesToStringBitmaps(src: string, target: string) {
         fs.writeFileSync(Path.join(target, `${fileName.split(".").slice(0, -1).join(".")}.txt`), converted)
     }
 }
-
-transformImagesToStringBitmaps("../../assets/sprites", "../../dist/sprites")
