@@ -21,6 +21,7 @@ export async function start(api: WebEngineAPI) {
     } = api
 
     const game = new GameState(api)
+
     while (true) {
         game.tick()
         drawScreen(api, game.toString())

@@ -1,5 +1,5 @@
 import type Entity from "game/entities/Entity.ts";
-import type {Menu} from "game/ui/menu.ts";
+import type {Menu} from "game/ui/menus/menu.ts";
 import PlayerEntity from "game/entities/player/PlayerEntity.ts";
 import Screen from "game/graphics/Screen"
 import type {WebEngineAPI} from "sprig/web";
@@ -25,7 +25,16 @@ export class GameState {
         this.dHeld = false
 
         this.api.onInput("a", () => {
-            console.log("a")
+            this.aHeld = true
+        })
+        this.api.onInput("d", () => {
+            this.dHeld = true
+        })
+        this.api.onInput("w", () => {
+            this.wHeld = true
+        })
+        this.api.onInput("s", () => {
+            this.sHeld = true
         })
     }
 
@@ -33,6 +42,11 @@ export class GameState {
         this.screen.clear()
         this.player.next(this)
         this.screen = this.player.draw(this.screen)
+
+        this.wHeld = false;
+        this.sHeld = false;
+        this.aHeld = false;
+        this.dHeld = false;
     }
 
     toString() {
