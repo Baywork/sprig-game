@@ -63,6 +63,14 @@ export default class Screen {
         }
     }
 
+    public clear() {
+        for (const row of this.pixels) {
+            row.forEach((val, index, array) => {
+                array[index] = "."
+            })
+        }
+    }
+    
     toString() {
         return this.pixels.map((row) => row.join("")).join("\n")
     }
