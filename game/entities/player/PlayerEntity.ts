@@ -21,10 +21,10 @@ export default class PlayerEntity extends Entity {
 
     next(gameState: GameState): void {
         if (Math.abs(this.xVelo) > 0) {
-            this.xVelo = Math.floor(this.xVelo/2)
+            this.xVelo = Math.floor(Math.abs(this.xVelo)/2) * this.xVelo/Math.abs(this.xVelo)
         }
         if (Math.abs(this.yVelo) > 0) {
-            this.yVelo = Math.floor(this.yVelo/2)
+            this.yVelo = Math.floor(Math.abs(this.yVelo)/2) * this.yVelo/Math.abs(this.yVelo)
         }
 
         if (this.xVelo == 0 && this.yVelo == 0) {
