@@ -5,7 +5,8 @@
     "dev": "npx astro dev",
     "build": "npx astro build",
     "preview": "npx astro preview",
-    "transformSprites": "npx tsx scripts/assets"
+    "transformSprites": "npx tsx scripts/assets",
+    "exportGame":  "webpack && node scripts/bundler.js"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
