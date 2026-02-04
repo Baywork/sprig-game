@@ -13,7 +13,7 @@ const api = {
         afterInput
     }
 
-GameLibrary.start(api)`
+GameExport.start(api)`
 function exportBundledCode(file = Path.join(process.cwd(), "dist", "bundle.js")) {
     if (!fs.existsSync(file)) throw new Error("File not found.")
     let plaintext = fs.readFileSync(file).toString()
