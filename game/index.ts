@@ -1,25 +1,14 @@
 import type {WebEngineAPI} from "sprig/web";
-import {drawScreen} from "game/graphics/helper.ts";
+import {drawScreen} from "game/graphics/helper";
 import Screen from "game/graphics/Screen"
-import {sleep} from "game/utils/sleep.ts";
-import {GameState} from "game/GameState.ts";
+import {sleep} from "game/utils/sleep";
+import {GameState} from "game/GameState";
 
 const LOOP_DELAY_MS: number = 50
 const SCREEN_WIDTH = 160
 const SCREEN_HEIGHT = 128
 
 export async function start(api: WebEngineAPI) {
-    const {
-        setLegend,
-        bitmap,
-        map,
-        setBackground,
-        setMap,
-        onInput,
-        getFirst,
-        afterInput
-    } = api
-
     const game = new GameState(api)
 
     while (true) {

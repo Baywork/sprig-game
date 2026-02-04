@@ -1,5 +1,5 @@
-import type {GameState} from "game/GameState.ts";
-import {Menu} from "game/ui/menus/menu.ts";
+import type {GameState} from "game/GameState";
+import {Menu} from "game/ui/menus/menu";
 import type {InputKey} from "sprig";
 
 export default class MainMenu extends Menu {

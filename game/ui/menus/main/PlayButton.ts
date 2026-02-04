@@ -1,6 +1,6 @@
 import type { GameState } from "game/GameState";
 import type Screen from "game/graphics/Screen";
-import Button from "game/ui/Button.ts";
+import Button from "game/ui/Button";
 
 export default class PlayButton extends Button {
     onClick(gameState: GameState): GameState {

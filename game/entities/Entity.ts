@@ -1,4 +1,4 @@
-import type {GameState} from "game/GameState.ts";
+import type {GameState} from "game/GameState";
 import Screen from "game/graphics/Screen"
 
 export default abstract class Entity {

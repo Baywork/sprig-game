@@ -1,5 +1,5 @@
-import type {GameState} from "game/GameState.ts";
-import type Screen from "game/graphics/Screen.ts";
+import type {GameState} from "game/GameState";
+import type Screen from "game/graphics/Screen";
 
 export default abstract class Button {
     abstract onClick(gameState: GameState): GameState

@@ -1,4 +1,4 @@
-import Entity from "game/entities/Entity.ts";
+import Entity from "game/entities/Entity";
 import type {GameState} from "game/GameState";
 import Screen from "game/graphics/Screen"
 

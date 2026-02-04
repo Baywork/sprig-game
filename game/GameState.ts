@@ -1,6 +1,6 @@
-import type Entity from "game/entities/Entity.ts";
-import type {Menu} from "game/ui/menus/menu.ts";
-import PlayerEntity from "game/entities/player/PlayerEntity.ts";
+import type Entity from "game/entities/Entity";
+import type {Menu} from "game/ui/menus/menu";
+import PlayerEntity from "game/entities/player/PlayerEntity";
 import Screen from "game/graphics/Screen"
 import type {WebEngineAPI} from "sprig/web";
 
