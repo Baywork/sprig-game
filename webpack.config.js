@@ -22,6 +22,7 @@ module.exports = {
             "game": path.resolve(__dirname, "game"),
             "app": path.resolve(__dirname, "app/src"),
             "lib": path.resolve(__dirname, "lib")
-        }
+        },
+        extensions: ['.ts', '.js', '.json']
     }
 };

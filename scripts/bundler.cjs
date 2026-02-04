@@ -1,5 +1,5 @@
-import * as Path from "node:path";
-import * as fs from "node:fs";
+const Path = require("node:path");
+const fs  = require("node:fs");
 
 const appendStr = `
 const api = {
@@ -14,8 +14,7 @@ const api = {
     }
 
 GameLibrary.start(api)`
-
-export function exportBundledCode(file = Path.join(__dirname, "dist", "bundle.js")) {
+function exportBundledCode(file = Path.join(process.cwd(), "dist", "bundle.js")) {
     if (!fs.existsSync(file)) throw new Error("File not found.")
     let plaintext = fs.readFileSync(file).toString()
     plaintext += appendStr;
