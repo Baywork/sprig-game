@@ -27,7 +27,7 @@ export default class Camera {
         for (let x = 0; x < this.width; x++) {
             for (let y = 0; y < this.height; y++) {
                 for (const entity of entities[x][y]) {
-                        screen.setPixelsAt(x, (this.height - y - (entity.height/2)), entity.sprite())
+                        screen.setPixelsAt(x, (this.height - y - (entity.height)), entity.sprite())
                 }
             }
         }
