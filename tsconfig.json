@@ -1,0 +1,21 @@
+{
+   /* "extends": [
+        "astro/tsconfigs/base"
+    ],*/
+    "esModuleInterop": true,
+    "compilerOptions": {
+        "noEmit": false,
+        "target": "es2024",
+        "jsx": "react-jsx",
+        "jsxImportSource": "react",
+        "esModuleInterop": true,
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "allowSyntheticDefaultImports": true,
+        "paths": {
+            "game/*": ["./game/*"],
+            "app/*": ["./app/src/*"],
+            "lib/*": ["./lib/*"]
+        }
+    }
+}

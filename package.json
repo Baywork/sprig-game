@@ -1,0 +1,33 @@
+{
+  "name": "sprig_game",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npx astro dev",
+    "build": "npx astro build",
+    "preview": "npx astro preview",
+    "transformSprites": "npx tsx scripts/assets",
+    "exportGame":  "webpack && node scripts/bundler.cjs"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.4.2",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.16.15",
+    "clsx": "^2.1.1",
+    "jimp": "^1.6.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "sprig": "^1.1.3",
+    "tailwindcss": "^4.1.18",
+    "ts-loader": "^9.5.4",
+    "tsx": "^4.21.0",
+    "webpack": "^5.105.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.0",
+    "typescript": "^5.5.3",
+    "webpack-cli": "^6.0.1"
+  },
+  "private": true
+}

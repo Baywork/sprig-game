@@ -1,0 +1,19 @@
+import type {WebEngineAPI} from "sprig/web";
+import {drawScreen} from "game/graphics/helper";
+import Screen from "game/graphics/Screen"
+import {sleep} from "game/utils/sleep";
+import {GameState} from "game/GameState";
+
+const LOOP_DELAY_MS: number = 50
+const SCREEN_WIDTH = 160
+const SCREEN_HEIGHT = 128
+
+export async function start(api: WebEngineAPI) {
+    const game = new GameState(api)
+
+    while (true) {
+        game.tick()
+        drawScreen(api, game.toString())
+        await sleep(LOOP_DELAY_MS)
+    }
+}
