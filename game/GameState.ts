@@ -23,7 +23,7 @@ export class GameState {
     constructor(public api: WebEngineAPI) {
         this.player = new PlayerEntity();
         this.screen = new Screen(160, 128)
-        this.camera = new Camera(160, 120)
+        this.camera = new Camera(160, 128)
         this.wHeld = false
         this.sHeld = false
         this.aHeld = false
