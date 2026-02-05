@@ -3,6 +3,12 @@ import type {GameState} from "game/GameState";
 import Screen from "game/graphics/Screen"
 
 export default class PlayerEntity extends Entity {
+    width: number;
+    height: number;
+    name: string;
+    sprite(): string {
+        return placeholder
+    }
     x: number
     y: number
 
