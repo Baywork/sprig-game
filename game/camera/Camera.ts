@@ -9,7 +9,7 @@ export default class Camera {
     xPos: number
     yPos: number
 
-    constructor(width: number, height: number, originX = 0, originY = 0) {
+    constructor(width: number, height: number, originX = 16, originY = 0) {
         this.width = width;
         this.height = height;
 
@@ -25,14 +25,15 @@ export default class Camera {
         if (gameState.player.x && (gameState.player.x-this.xPos > 120) || gameState.player.x - this.xPos < 0) {
             const sign = gameState.player.x > this.xPos ? 1 : -1
             this.xPos += sign * 2
+            if (this.xPos < gameState.world.bufferSize) this.xPos = gameState.world.bufferSize
         }
 
-        const entities = world.getRangeBodies(this.xPos, this.yPos, this.width + this.xPos, this.height + this.yPos)
+        const entities = world.getRangeBodies(this.xPos - gameState.world.bufferSize, this.yPos, this.width + this.xPos, this.height + this.yPos)
 
-        for (let x = 0; x < this.width; x++) {
+        for (let x = 0; x < this.width + gameState.world.bufferSize; x++) {
             for (let y = 0; y < this.height; y++) {
                 for (const entity of entities[x][y]) {
-                        screen.setPixelsAt(x, (this.height - y - (entity.height)), entity.sprite())
+                        screen.setPixelsAt(x - gameState.world.bufferSize, (this.height - y - (entity.height)), entity.sprite())
                 }
             }
         }
