@@ -22,7 +22,12 @@ export default class Camera {
         const heightScalar = screen.height/this.height
         const world = gameState.world
 
-        const entities = world.getRangeBodies(this.xPos, this.yPos, this.width, this.height)
+        if (gameState.player.x && (gameState.player.x-this.xPos > 120) || gameState.player.x - this.xPos < 0) {
+            const sign = gameState.player.x > this.xPos ? 1 : -1
+            this.xPos += sign * 2
+        }
+
+        const entities = world.getRangeBodies(this.xPos, this.yPos, this.width + this.xPos, this.height + this.yPos)
 
         for (let x = 0; x < this.width; x++) {
             for (let y = 0; y < this.height; y++) {
