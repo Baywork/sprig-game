@@ -1,0 +1,21 @@
+import {Body} from "game/body/Body";
+import {GameState} from "game/GameState";
+
+// The name should be the name of the "tile" or "block" followed by Body.
+// EX: SandBody or GlassBody
+export class ____Body extends Body {
+    name: string;
+    width: number = 12;
+    height: number = 12;
+
+    constructor(x: number, y: number, game: GameState) {
+        super(x, y, game);
+    }
+
+
+    // After adding your png file to the /assets/sprites directory, run 'npm run transformSprites' and then you can copy and paste the text from the eponymous .txt file in /dist/sprites inside the backticks
+    sprite(): string {
+        return `____`;
+    }
+
+}
