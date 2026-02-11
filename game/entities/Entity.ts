@@ -45,8 +45,8 @@ export default abstract class Entity extends Body {
             for (const collision of xCollisions) {
                 // -1:L 1:R
 
-                if (potentialX < collision.x && collision.x + collision.width > potentialX) potentialX = collision.x + collision.width + 1
-                else if (potentialX > collision.x) potentialX = collision.x - this.width - 1
+                if (potentialX > collision.x && collision.x + collision.width > potentialX) potentialX = collision.x + collision.width
+                else if (potentialX < collision.x) potentialX = collision.x - this.width
             }
 
             for (const collision of yCollisions) {
