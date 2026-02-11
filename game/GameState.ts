@@ -39,7 +39,7 @@ export class GameState {
         this.player = new PlayerEntity(this);
 
         const map = new TestMap(this)
-        console.log(map.tileMap)
+
 
         this.deltaTime = 0
 

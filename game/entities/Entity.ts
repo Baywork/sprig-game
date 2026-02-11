@@ -40,8 +40,6 @@ export default abstract class Entity extends Body {
             const xCollisions: Body[] = this.game.world.getCollidingBodies(potentialX, this.y, potentialX + this.width, this.y + this.height).flat(2).filter((val) => !(val instanceof Entity))
             const yCollisions: Body[] = this.game.world.getCollidingBodies(this.x, potentialY, this.x + this.width, potentialY + this.height).flat(2).filter((val) => !(val instanceof Entity))
 
-            if (potentialY !== this.y) console.log(potentialY)
-
             for (const collision of xCollisions) {
                 // -1:L 1:R
 
@@ -51,7 +49,6 @@ export default abstract class Entity extends Body {
 
             for (const collision of yCollisions) {
                 if (collision.y < potentialY && collision.y + collision.height > potentialY) {
-                    console.log("y col")
                     potentialY = collision.y + collision.height
                 }
                 else if (collision.y > potentialY) potentialY = collision.y - this.height - 1
