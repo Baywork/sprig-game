@@ -27,6 +27,7 @@ export default abstract class Entity extends Body {
         if (!this.isOnGround() || Math.abs(this.xVelocity) > 0 || Math.abs(this.yVelocity) > 0) {
             if (!this.isOnGround()) {
                 this.gravityVelocity += 10 * deltaTime / 1000
+                if (this.gravityVelocity > 20) this.gravityVelocity = 20
             } else if (this.isOnGround()) {
                 this.gravityVelocity = 0
             }
