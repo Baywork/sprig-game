@@ -8,6 +8,6 @@ const GRAVITY = 10;
 export function gravityVelocity(previousGravity: number, dTimeMS: number): number {
     if (previousGravity >= TERMINAL_VELOCITY) return TERMINAL_VELOCITY
 
-    const addtVelocity = GRAVITY * dTimeMS * (1 / 1000)
+    const addtVelocity = GRAVITY * dTimeMS * (1 / 400)
     return previousGravity + addtVelocity
 }
