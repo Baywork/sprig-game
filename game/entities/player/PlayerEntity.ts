@@ -1,18 +1,11 @@
 import Entity from "game/entities/Entity";
 import type {GameState} from "game/GameState";
-import World from "game/world/World";
 
 export default class PlayerEntity extends Entity {
     width: number;
     height: number;
     name: string;
-
-    sprite(): string {
-        return placeholder
-    }
-
     actionable: boolean
-
 
     constructor(game: GameState) {
         super(24, 12, game);
@@ -28,6 +21,9 @@ export default class PlayerEntity extends Entity {
         this.actionable = true;
     }
 
+    sprite(): string {
+        return placeholder
+    }
 
     onTick(deltaTime: number): void {
         if (Math.abs(this.xVelocity) > 0) {

@@ -1,8 +1,7 @@
 import {Body} from "game/body/Body";
-import World from "game/world/World";
 import {GameState} from "game/GameState";
 
-export class GrassBody extends Body {
+export class EarthBody extends Body {
     name: string;
     width: number = 12;
     height: number = 12;

@@ -1,26 +1,21 @@
 export default class Screen {
-    get height(): number {
-        return this._height;
-    }
-
-    get width(): number {
-        return this._width;
-    }
-
     private readonly _width: number
     private readonly _height: number
-
     private readonly pixels: string[][]
-
-    private withinBounds = (x: number, y: number): boolean => {
-        return x < this.width && y < this.height;
-    }
 
     constructor(width: number, height: number) {
         this._width = width;
         this._height = height;
 
         this.pixels = new Array(height).fill([], 0, height).map(() => new Array(width).fill(".", 0, width))
+    }
+
+    get height(): number {
+        return this._height;
+    }
+
+    get width(): number {
+        return this._width;
     }
 
     public getPixelAt(x: number, y: number) {
@@ -71,8 +66,12 @@ export default class Screen {
             })
         }
     }
-    
+
     toString() {
         return this.pixels.map((row) => row.join("")).join("\n")
+    }
+
+    private withinBounds = (x: number, y: number): boolean => {
+        return x < this.width && y < this.height;
     }
 }

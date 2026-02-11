@@ -9,7 +9,7 @@ const SCREEN_HEIGHT = 128
 
 export async function start(api: WebEngineAPI) {
     const game = new GameState(api)
-    let prevTime =  performance.now()
+    let prevTime = performance.now()
     while (true) {
         const now = performance.now()
         game.tick(now - prevTime)

@@ -20,7 +20,7 @@ export default class MainMenu extends Menu {
         return
     }
 
-    draw(screen : Screen) : Screen {
+    draw(screen: Screen): Screen {
 
         return screen
     }

@@ -19,11 +19,11 @@ export abstract class Map {
             const res = []
             if (split[y][x] == grassTileColor) {
 
-                res.push(new GrassBody(x*this.game.world.distanceUnitResolution, y*this.game.world.distanceUnitResolution, this.game))
+                res.push(new GrassBody(x * this.game.world.distanceUnitResolution, y * this.game.world.distanceUnitResolution, this.game))
             }
             if (split[y][x] == playerSpawnColor) {
-                this.game.player.x = x*this.game.world.distanceUnitResolution
-                this.game.player.y = y*this.game.world.distanceUnitResolution
+                this.game.player.x = x * this.game.world.distanceUnitResolution
+                this.game.player.y = y * this.game.world.distanceUnitResolution
             }
             return res
         }))

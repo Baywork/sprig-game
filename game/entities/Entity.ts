@@ -8,13 +8,6 @@ export default abstract class Entity extends Body {
     yVelocity: number
     gravityVelocity: number
     gravity: boolean
-    isOnGround: () => boolean = () => {
-        const colliders = this.game.world.getCollidingBodies(this.x + 1, this.y - 1, this.x + this.width - 1, this.y + this.height)
-        for (const body of colliders) {
-            if (body.y <= this.y) return true
-        }
-        return false
-    }
 
     constructor(x: number, y: number, game: GameState) {
         super(x, y, game);
@@ -22,6 +15,14 @@ export default abstract class Entity extends Body {
         this.xVelocity = 0
         this.yVelocity = 0
         this.gravityVelocity = 0
+    }
+
+    isOnGround: () => boolean = () => {
+        const colliders = this.game.world.getCollidingBodies(this.x + 1, this.y - 1, this.x + this.width - 1, this.y + this.height)
+        for (const body of colliders) {
+            if (body.y <= this.y) return true
+        }
+        return false
     }
 
     abstract onTick(deltaTime: number): void
@@ -52,8 +53,7 @@ export default abstract class Entity extends Body {
             for (const collision of yCollisions) {
                 if (collision.y < potentialY && collision.y + collision.height > potentialY) {
                     potentialY = collision.y + collision.height
-                }
-                else if (collision.y > potentialY) potentialY = collision.y - this.height - 1
+                } else if (collision.y > potentialY) potentialY = collision.y - this.height - 1
             }
             this.x = potentialX
             this.y = potentialY

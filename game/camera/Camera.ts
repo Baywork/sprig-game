@@ -18,11 +18,11 @@ export default class Camera {
     }
 
     frame(gameState: GameState, screen: Screen): Screen {
-        const widthScalar = screen.width/this.width
-        const heightScalar = screen.height/this.height
+        const widthScalar = screen.width / this.width
+        const heightScalar = screen.height / this.height
         const world = gameState.world
 
-        if (gameState.player.x && (gameState.player.x-this.xPos > 120) || gameState.player.x - this.xPos < 0) {
+        if (gameState.player.x && (gameState.player.x - this.xPos > 120) || gameState.player.x - this.xPos < 0) {
             const sign = gameState.player.x > this.xPos ? 1 : -1
             this.xPos += sign * 2
             if (this.xPos < gameState.world.bufferSize) this.xPos = gameState.world.bufferSize
@@ -33,7 +33,7 @@ export default class Camera {
         for (let x = 0; x < this.width + gameState.world.bufferSize; x++) {
             for (let y = 0; y < this.height; y++) {
                 for (const entity of entities[x][y]) {
-                        screen.setPixelsAt(x - gameState.world.bufferSize, (this.height - y - (entity.height)), entity.sprite())
+                    screen.setPixelsAt(x - gameState.world.bufferSize, (this.height - y - (entity.height)), entity.sprite())
                 }
             }
         }
