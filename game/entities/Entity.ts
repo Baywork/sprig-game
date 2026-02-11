@@ -37,8 +37,8 @@ export default abstract class Entity extends Body {
             let potentialY = Math.round((this.yVelocity - this.gravityVelocity) * deltaTime / 100) + this.y
 
             //console.log((this.xVelocity * deltaTime)/1000)
-            const xCollisions: Body[] = this.game.world.getCollidingBodies(potentialX, this.y, potentialX + this.width, this.y + this.height).flat(2).filter((val) => val != this)
-            const yCollisions: Body[] = this.game.world.getCollidingBodies(this.x, potentialY, this.x + this.width, potentialY + this.height).flat(2).filter((val) => val != this)
+            const xCollisions: Body[] = this.game.world.getCollidingBodies(potentialX, this.y, potentialX + this.width, this.y + this.height).flat(2).filter((val) => !(val instanceof Entity))
+            const yCollisions: Body[] = this.game.world.getCollidingBodies(this.x, potentialY, this.x + this.width, potentialY + this.height).flat(2).filter((val) => !(val instanceof Entity))
 
             if (potentialY !== this.y) console.log(potentialY)
 
