@@ -8,6 +8,7 @@ export default function GameWindowComponent({width, className = ""}: { width: nu
     useEffect(() => {
         const engine = webEngine(document.getElementById("canvas") as HTMLCanvasElement)
         start(engine.api)
+        document.getElementById("canvas").focus()
     }, []);
 
     return (<>
