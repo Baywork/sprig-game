@@ -1,7 +1,7 @@
 {
-   /* "extends": [
+    "extends": [
         "astro/tsconfigs/base"
-    ],*/
+    ],
     "esModuleInterop": true,
     "compilerOptions": {
         "noEmit": false,
@@ -10,12 +10,24 @@
         "jsxImportSource": "react",
         "esModuleInterop": true,
         "module": "nodenext",
-        "moduleResolution": "nodenext",
         "allowSyntheticDefaultImports": true,
         "paths": {
-            "game/*": ["./game/*"],
-            "app/*": ["./app/src/*"],
-            "lib/*": ["./lib/*"]
+            "game/*": [
+                "./game/*"
+            ],
+            "app/*": [
+                "./app/src/*"
+            ],
+            "lib/*": [
+                "./lib/*"
+            ]
         }
-    }
+    },
+    "include": [
+        ".astro/types.d.ts",
+        "**/*"
+    ],
+    "exclude": [
+        "dist"
+    ]
 }

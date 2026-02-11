@@ -1,7 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import GameWindowComponent from "app/components/GameWindowComponent";
+import "../styles/global.css"
+import VersionText from "app/components/VersionText";
 ---
 
 <Layout>
-
+    <div class="flex flex-row justify-between min-h-screen bg-slate-400 p-4">
+        <div class="w-full h-[97vh] flex flex-col justify-between">
+            <h1 class="text-2xl italic">Untitled Platformer Game</h1>
+            <h2 class="mt-auto flex flex-row gap-1">Version <VersionText client:load/></h2>
+        </div>
+        <div>
+            <GameWindowComponent width={600} className="mx-auto" client:load/>
+        </div>
+    </div>
 </Layout>
