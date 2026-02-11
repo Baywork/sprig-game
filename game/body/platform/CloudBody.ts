@@ -3,7 +3,7 @@ import {GameState} from "game/GameState";
 
 // The name should be the name of the "tile" or "block" followed by Body.
 // EX: SandBody or GlassBody
-export class ____Body extends Body {
+export class CloudBody extends Body {
     name: string;
     width: number = 12;
     height: number = 12;
