@@ -1,32 +1,26 @@
 import Entity from "game/entities/Entity";
 import type {GameState} from "game/GameState";
-import Screen from "game/graphics/Screen"
+import World from "game/world/World";
 
 export default class PlayerEntity extends Entity {
     width: number;
     height: number;
     name: string;
+
     sprite(): string {
         return placeholder
     }
-    x: number
-    y: number
-
-    xVelo: number
-    yVelo: number
-
-    gravityVelocity: number
 
     actionable: boolean
-    isOnGround: boolean
 
-    constructor() {
-        super();
-        this.x = 0;
-        this.y = 0;
 
-        this.xVelo = 0;
-        this.yVelo = 0;
+    constructor(game: GameState) {
+        super(24, 12, game);
+        this.x = 24;
+        this.y = 12;
+
+        this.xVelocity = 0;
+        this.yVelocity = 0;
 
         this.width = 16;
         this.height = 16
@@ -34,42 +28,38 @@ export default class PlayerEntity extends Entity {
         this.gravityVelocity = 0;
 
         this.actionable = true;
-        this.isOnGround = false;
     }
 
 
-    next(gameState: GameState): void {
-        if (Math.abs(this.xVelo) > 0) {
-            this.xVelo = Math.floor(Math.abs(this.xVelo) - 1) * this.xVelo/Math.abs(this.xVelo)
+    onTick(deltaTime: number): void {
+        if (Math.abs(this.xVelocity) > 0) {
+            this.xVelocity = Math.floor(Math.abs(this.xVelocity) - 1) * this.xVelocity / Math.abs(this.xVelocity)
         }
-        if (Math.abs(this.yVelo) > 0) {
-            this.yVelo = Math.floor(Math.abs(this.yVelo) - 1) * this.yVelo/Math.abs(this.yVelo)
-        }
-
-        if (this.xVelo == 0 && this.yVelo == 0) {
-            if (gameState.wHeld) {
-                this.yVelo += dashVeloAdd
-            }
-            if (gameState.sHeld) {
-                this.yVelo -= dashVeloAdd
-            }
-            if (gameState.aHeld) {
-                this.xVelo -= dashVeloAdd
-            }
-            if (gameState.dHeld) {
-                this.xVelo += dashVeloAdd
-            }
+        if (Math.abs(this.yVelocity) > 0) {
+            this.yVelocity = Math.floor(Math.abs(this.yVelocity) - 1) * this.yVelocity / Math.abs(this.yVelocity)
         }
 
-        this.x += this.xVelo;
-        this.y += this.yVelo;
+        if (Math.abs(this.xVelocity) == 0 && Math.abs(this.yVelocity) == 0) {
+            if (this.game.wHeld) {
+                this.yVelocity += dashVeloAdd
+            }
+            if (this.game.sHeld) {
+                this.yVelocity -= dashVeloAdd
+            }
+            if (this.game.aHeld) {
+                this.xVelocity -= dashVeloAdd
+            }
+            if (this.game.dHeld) {
+                this.xVelocity += dashVeloAdd
+            }
+        } else {
+            if (this.game.wHeld || this.game.sHeld || this.game.aHeld || this.game.dHeld) {
+                console.log("Tried to perform an action while inactionable")
+            }
+        }
+
         if (this.x < 0) this.x = 0
         if (this.y < 0) this.y = 0
-    }
-
-    draw(screen: Screen): Screen {
-        screen.setPixelsAt(this.x, this.y, this.toString())
-        return screen
     }
 
     toString(): string {
@@ -77,7 +67,7 @@ export default class PlayerEntity extends Entity {
     }
 }
 
-const dashVeloAdd = 3
+const dashVeloAdd = 5
 const placeholder = `..00.........0..
 ..00........00..
 ..00.......000..

@@ -1,16 +1,14 @@
 import {Body} from "game/body/Body";
+import World from "game/world/World";
+import {GameState} from "game/GameState";
 
 export class PlatformBody extends Body {
     name: string;
-    x: number;
-    y: number;
-    width: 1;
-    height: 1;
+    width: number = 12;
+    height: number = 12;
 
-    constructor(x, y) {
-        super();
-        this.x = x;
-        this.y = y;
+    constructor(x: number, y: number, game: GameState) {
+        super(x, y, game);
     }
 
 

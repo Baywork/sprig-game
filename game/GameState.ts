@@ -5,6 +5,7 @@ import Screen from "game/graphics/Screen"
 import type {WebEngineAPI} from "sprig/web";
 import World from "game/world/World";
 import Camera from "game/camera/Camera";
+import {PlatformBody} from "game/body/platform/PlatformBody";
 
 export class GameState {
 
@@ -18,17 +19,25 @@ export class GameState {
     sHeld: boolean
     aHeld: boolean
     dHeld: boolean
-
+    deltaTime: number
 
     constructor(public api: WebEngineAPI) {
-        this.player = new PlayerEntity();
         this.screen = new Screen(160, 128)
         this.camera = new Camera(160, 128)
         this.wHeld = false
         this.sHeld = false
         this.aHeld = false
         this.dHeld = false
-        this.world = new World(this.player, 1000, 200, "")
+        this.world = new World(1000, 200, "")
+
+        for (let i = 0; i < this.world.mapWidth; i++) {
+            if (i % this.world.distanceUnitResolution == 0) {
+                this.world.map[i][0].push(new PlatformBody(i, 0, this))
+            }
+        }
+
+        this.deltaTime = 0
+        this.player = new PlayerEntity(this);
 
         this.api.onInput("a", () => {
             this.aHeld = true
@@ -44,10 +53,13 @@ export class GameState {
         })
     }
 
-    tick() {
+    tick(deltaTime: number) {
+
         this.screen.clear()
-        this.player.next(this)
+        this.player.next(deltaTime)
         this.screen = this.camera.frame(this, this.screen)
+
+        this.deltaTime = deltaTime
 
         this.wHeld = false;
         this.sHeld = false;

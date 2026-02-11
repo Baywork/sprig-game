@@ -1,4 +1,3 @@
-import PlayerEntity from "game/entities/player/PlayerEntity";
 import Entity from "game/entities/Entity";
 import {GameState} from "game/GameState";
 import {Body} from "game/body/Body";
@@ -9,36 +8,86 @@ export default class World {
     mapHeight: number
     entities: Entity[]
 
+    distanceUnitResolution: number = 12
+
     // maybe we manage our max width and height somewhere else? dunno for now
-    constructor(player: PlayerEntity, width: number, height: number, map: string) {
+    constructor(width: number, height: number, map: string) {
         this.mapWidth = width;
         this.mapHeight = height
         this.entities = []
         this.map = new Array(width).fill([], 0, width).map(() => new Array(height).fill([], 0, height).map(() => []))
-
-        this.entities.push(player)
     }
 
     tick(gameState: GameState) {
 
     }
 
-    getObjectsInRange(minX: number, minY: number, maxX: number, maxY: number) {
+    getRangeBodies(minX: number, minY: number, maxX: number, maxY: number) {
         const width = maxX - minX
         const height = maxY - minY
 
         const res = new Array(width).fill([], 0, width).map(() => new Array(height).fill([], 0, height).map((): Body[] => []))
 
-        for (const entity of this.entities) {
-            if (entity.isWithinRange(minX, minY, maxX, maxY)) res[entity.x - minX][entity.y - minY].push(entity)
-        }
-
         for (let x = minX; x < maxX; x++) {
             for (let y = minY; y < maxY; y++) {
-                res[x][y].push(...this.map[x][y])
+
+                if (this.map[x][y] && this.map[x][y].length > 0) {
+                    for (const body of this.map[x][y]) {
+                        if (body.isWithinRange(minX, minY, maxX, maxY)) res[x - minX][y - minY].push(body)
+                    }
+
+                    res[x - minX][y - minY].push(...this.map[x][y])
+                }
+            }
+        }
+        for (const entity of this.entities) {
+            // todo: this is NOT a fix.
+            if (entity.x > minX && entity.y > minY) {
+                if (entity.isWithinRange(minX, minY, maxX, maxY)) res[entity.x - minX][entity.y - minY].push(entity)
             }
         }
 
         return res
+    }
+
+    getBodiesCollidingWith(body: Body, searchRadius: number = 4) {
+        const xA = body.x;
+        const yA = body.y;
+        const xB = body.x + body.width;
+        const yB = body.y + body.width;
+
+
+        return this.getCollidingBodies(xA, yA, xB, yB, searchRadius)
+    }
+
+
+    getCollidingBodies(xA, yA, xB, yB, searchRadius: number = 4) {
+        const res = []
+        let lowerX = xA - searchRadius
+        let lowerY = yA - searchRadius
+
+        if (lowerX < 0) lowerX = 0;
+        if (lowerY < 0) lowerY = 0;
+
+        const slice = this.map.slice(lowerX, xB).map((column) => column.slice(lowerY, yB))
+
+        for (const row of slice) {
+            for (const col of row) {
+                for (const body of col) {
+                    if (body.isWithinRange(xA, yA, xB, yB)) res.push(body)
+                }
+            }
+        }
+
+        return res
+    }
+
+
+    addBody(body: Body) {
+        this.map[body.x][body.y].push(body)
+    }
+
+    addEntity(entity: Entity) {
+        this.entities.push(entity)
     }
 }

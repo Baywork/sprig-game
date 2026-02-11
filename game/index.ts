@@ -1,6 +1,5 @@
 import type {WebEngineAPI} from "sprig/web";
 import {drawScreen} from "game/graphics/helper";
-import Screen from "game/graphics/Screen"
 import {sleep} from "game/utils/sleep";
 import {GameState} from "game/GameState";
 
@@ -10,10 +9,12 @@ const SCREEN_HEIGHT = 128
 
 export async function start(api: WebEngineAPI) {
     const game = new GameState(api)
-
+    let prevTime =  performance.now()
     while (true) {
-        game.tick()
+        const now = performance.now()
+        game.tick(now - prevTime)
         drawScreen(api, game.toString())
+        prevTime = now
         await sleep(LOOP_DELAY_MS)
     }
 }
