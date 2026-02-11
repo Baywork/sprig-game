@@ -13,7 +13,10 @@ export class ____Body extends Body {
     }
 
 
-    // After adding your png file to the /assets/sprites directory, run 'npm run transformSprites' and then you can copy and paste the text from the eponymous .txt file in /dist/sprites inside the backticks
+    // After adding your png file to the /assets/sprites directory, run 'npm run transformSprites' in the terminal.
+    // Once run, the sprite will be turned into text that you can copy and paste.
+    // The text file will be in /dist/sprites, and share the name with the image file but with .txt at the end instead.
+    // Copy and paste the contents of the text file in the backticks.
     sprite(): string {
         return `____`;
     }
