@@ -36,12 +36,13 @@ export class GameState {
                 this.world.map[i][0].push(new GrassBody(i, 0, this))
             }
         }
+        this.player = new PlayerEntity(this);
 
         const map = new TestMap(this)
         console.log(map.tileMap)
 
         this.deltaTime = 0
-        this.player = new PlayerEntity(this);
+
 
         this.api.onInput("a", () => {
             this.aHeld = true

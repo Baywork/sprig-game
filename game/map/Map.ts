@@ -18,8 +18,12 @@ export abstract class Map {
         this.tileMap = new Array(this.width).fill([], 0, this.width).map((col, x) => new Array(this.height).fill([], 0, this.height).map((bodies, y) => {
             const res = []
             if (split[y][x] == grassTileColor) {
-                console.log(split[y][x])
+
                 res.push(new GrassBody(x*this.game.world.distanceUnitResolution, y*this.game.world.distanceUnitResolution, this.game))
+            }
+            if (split[y][x] == playerSpawnColor) {
+                this.game.player.x = x*this.game.world.distanceUnitResolution
+                this.game.player.y = y*this.game.world.distanceUnitResolution
             }
             return res
         }))

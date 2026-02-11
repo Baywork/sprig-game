@@ -16,8 +16,6 @@ export default class PlayerEntity extends Entity {
 
     constructor(game: GameState) {
         super(24, 12, game);
-        this.x = 24;
-        this.y = 12;
 
         this.xVelocity = 0;
         this.yVelocity = 0;
