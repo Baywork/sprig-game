@@ -9,7 +9,7 @@ export default abstract class Entity extends Body {
     gravityVelocity: number
     gravity: boolean
     isOnGround: () => boolean = () => {
-        const colliders = this.game.world.getBodiesCollidingWith(this.expand(1))
+        const colliders = this.game.world.getCollidingBodies(this.x, this.y - 1, this.x + this.width, this.y + this.height)
         for (const body of colliders) {
             if (body.y <= this.y) return true
         }
