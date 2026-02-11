@@ -6,7 +6,7 @@ import type {WebEngineAPI} from "sprig/web";
 import World from "game/world/World";
 import Camera from "game/camera/Camera";
 import {GrassBody} from "game/body/platform/GrassBody.ts";
-import {TestMap} from "game/map/testmap.ts";
+import {TestMap} from "game/map/TestMap.ts";
 
 export class GameState {
 

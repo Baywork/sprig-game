@@ -61,7 +61,7 @@ export default class PlayerEntity extends Entity {
     }
 }
 
-const dashVeloAdd = 13
+const dashVeloAdd = 20
 const placeholder = `..00.........0..
 ..00........00..
 ..00.......000..

@@ -46,14 +46,33 @@ export default abstract class Entity extends Body {
             for (const collision of xCollisions) {
                 // -1:L 1:R
 
-                if (potentialX > collision.x && collision.x + collision.width > potentialX) potentialX = collision.x + collision.width
-                else if (potentialX < collision.x) potentialX = collision.x - this.width
+                if (potentialX < collision.x) {
+                    console.log('Right side collision')
+                    potentialX = collision.x - this.width
+                    this.xVelocity = 0
+                } else if (potentialX < collision.x) {
+                    console.log("Left side collision")
+                    potentialX = collision.x + collision.width
+                    this.xVelocity = 0
+                }
             }
 
             for (const collision of yCollisions) {
-                if (collision.y < potentialY && collision.y + collision.height > potentialY) {
+                if (collision.y < potentialY) {
+                    console.log(`Bottom collision; Relative floor ${collision.y + collision.height} compared to player ${potentialY}`)
                     potentialY = collision.y + collision.height
-                } else if (collision.y > potentialY) potentialY = collision.y - this.height - 1
+                    this.yVelocity = 0
+                    this.gravityVelocity = 0
+                    if ((collision.y + collision.height) >= potentialY) {
+                        console.log("Overlap")
+                    } else {
+                        console.log("Non overlap")
+                    }
+                } else if (collision.y > potentialY && (potentialY + this.height) > collision.y) {
+                    console.log("Top collision")
+                    potentialY = collision.y - this.height
+                    this.yVelocity = 0
+                }
             }
             this.x = potentialX
             this.y = potentialY
