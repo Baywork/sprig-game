@@ -1,1 +1,2 @@
-View deployment at [baywork.github.io/sprig-game](https://baywork.github.io/sprig-game]
+View deployment at [baywork.github.io/sprig-game](https://baywork.github.io/sprig-game)
+
