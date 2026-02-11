@@ -1,5 +1,4 @@
 import {Body} from "game/body/Body";
-import World from "game/world/World";
 import {GameState} from "game/GameState";
 
 export class GrassBody extends Body {
@@ -10,7 +9,6 @@ export class GrassBody extends Body {
     constructor(x: number, y: number, game: GameState) {
         super(x, y, game);
     }
-
 
     sprite(): string {
         return `444444444444
