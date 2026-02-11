@@ -33,13 +33,13 @@ export default class PlayerEntity extends Entity {
 
     onTick(deltaTime: number): void {
         if (Math.abs(this.xVelocity) > 0) {
-            this.xVelocity = Math.floor(Math.abs(this.xVelocity) - 1) * this.xVelocity / Math.abs(this.xVelocity)
+            this.xVelocity = Math.floor(Math.abs(this.xVelocity) / 2) * this.xVelocity / Math.abs(this.xVelocity)
         }
         if (Math.abs(this.yVelocity) > 0) {
-            this.yVelocity = Math.floor(Math.abs(this.yVelocity) - 1) * this.yVelocity / Math.abs(this.yVelocity)
+            this.yVelocity = Math.floor(Math.abs(this.yVelocity) / 2) * this.yVelocity / Math.abs(this.yVelocity)
         }
 
-        if (Math.abs(this.xVelocity) == 0 && Math.abs(this.yVelocity) == 0) {
+        if (Math.abs(this.xVelocity) <= 4 && Math.abs(this.yVelocity) <= 4) {
             if (this.game.wHeld) {
                 this.yVelocity += dashVeloAdd
             }
@@ -67,7 +67,7 @@ export default class PlayerEntity extends Entity {
     }
 }
 
-const dashVeloAdd = 5
+const dashVeloAdd = 13
 const placeholder = `..00.........0..
 ..00........00..
 ..00.......000..
