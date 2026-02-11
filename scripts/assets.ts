@@ -9,5 +9,5 @@ function transformMaps() {
     transformImagesToMaps("assets/maps", "dist/maps")
 }
 
-//transformSprites()
+transformSprites()
 transformMaps()
