@@ -7,6 +7,7 @@ export default abstract class Entity extends Body {
     xVelocity: number
     yVelocity: number
     gravityVelocity: number
+    gravity: boolean
     isOnGround: () => boolean = () => {
         const colliders = this.game.world.getBodiesCollidingWith(this.expand(1))
         for (const body of colliders) {
@@ -17,6 +18,7 @@ export default abstract class Entity extends Body {
 
     constructor(x: number, y: number, game: GameState) {
         super(x, y, game);
+        this.gravity = true
         this.xVelocity = 0
         this.yVelocity = 0
         this.gravityVelocity = 0
@@ -26,7 +28,7 @@ export default abstract class Entity extends Body {
 
     nextPhysicsTick(deltaTime: number) {
         if (!this.isOnGround() || Math.abs(this.xVelocity) > 0 || Math.abs(this.yVelocity) > 0) {
-            if (!this.isOnGround()) {
+            if (!this.isOnGround() && this.gravity) {
                 this.gravityVelocity = gravityVelocity(this.gravityVelocity, deltaTime)
             } else if (this.isOnGround()) {
                 this.gravityVelocity = 0
