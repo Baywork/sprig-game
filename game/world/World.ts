@@ -82,8 +82,7 @@ export default class World {
         if (lowerX < 0) lowerX = 0;
         if (lowerY < 0) lowerY = 0;
 
-        const slice = this.map.slice(lowerX, xB).map((column) => column.slice(lowerY, yB))
-
+        const slice = this.map.slice(lowerX, xB + searchRadius).map((column) => column.slice(lowerY, yB + searchRadius))
         for (const row of slice) {
             for (const col of row) {
                 for (const body of col) {
@@ -91,7 +90,6 @@ export default class World {
                 }
             }
         }
-
         return res
     }
 

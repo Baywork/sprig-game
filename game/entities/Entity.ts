@@ -22,7 +22,6 @@ export default abstract class Entity extends Body {
         for (const body of colliders) {
             if (body.y <= this.y) return true
         }
-        return false
     }
 
     abstract onTick(deltaTime: number): void
@@ -40,40 +39,39 @@ export default abstract class Entity extends Body {
             let potentialY = Math.round((this.yVelocity - this.gravityVelocity) * deltaTime / 100) + this.y
 
             //console.log((this.xVelocity * deltaTime)/1000)
-            const xCollisions: Body[] = this.game.world.getCollidingBodies(potentialX, this.y, potentialX + this.width, this.y + this.height).flat(2).filter((val) => !(val instanceof Entity))
-            const yCollisions: Body[] = this.game.world.getCollidingBodies(this.x, potentialY, this.x + this.width, potentialY + this.height).flat(2).filter((val) => !(val instanceof Entity))
+            const dx = potentialX-this.x
+            const dy = potentialY-this.y
 
-            for (const collision of xCollisions) {
-                // -1:L 1:R
+            const xCollisions: Body[] = this.game.world.getCollidingBodies(dx <= 0 ? potentialX : this.x, this.y, dx <= 0 ? this.x + this.width : potentialX + this.width, this.y + this.height).flat(2).filter((val) => !(val instanceof Entity))
+            const yCollisions: Body[] = this.game.world.getCollidingBodies(this.x, potentialY < this.y ? potentialY : this.y, this.x + this.width, potentialY > this.y ? potentialY : this.y + this.height, 12).flat(3).filter((val) => !(val instanceof Entity))
+            const xSorted = xCollisions.sort((a, b) => (dx > 0) ? (a.x - b.x) : (b.x - a.x)).filter((body) => dx <= 0 ? body.x <= this.x : body.x >= this.x)
 
-                if (potentialX < collision.x) {
-                    console.log('Right side collision')
-                    potentialX = collision.x - this.width
-                    this.xVelocity = 0
-                } else if (potentialX < collision.x) {
-                    console.log("Left side collision")
-                    potentialX = collision.x + collision.width
-                    this.xVelocity = 0
+            //if (dx !== 0 ) console.log(xCollisions.sort((a, b) => (dx > 0) ? (a.x - b.x) : (b.x - a.x)))
+            if (dx !== 0 && xSorted[0] !== undefined) {
+                const collider = xSorted[0]
+                if (dx <= 0) {
+                    potentialX = collider.x + collider.width
+                    console.log("left")
+                } else {
+                    potentialX = collider.x - this.width
+                    console.log("Right")
+                }
+
+            }
+            const ySorted = yCollisions.sort((a, b) => (dy > 0) ? (a.y - b.y) : (b.y - a.y)).filter((body) => dy <= 0 ? body.y <= this.y : body.y >= this.y)
+
+            if (dy !== 0 && ySorted[0] !== undefined) {
+                const collider = ySorted[0]
+                if (dy <= 0) {
+                    potentialY = collider.y + collider.height
+                    console.log("Bottom")
+                } else {
+                    potentialY = collider.y - this.height
+                    console.log('Top')
                 }
             }
-
-            for (const collision of yCollisions) {
-                if (collision.y < potentialY) {
-                    console.log(`Bottom collision; Relative floor ${collision.y + collision.height} compared to player ${potentialY}`)
-                    potentialY = collision.y + collision.height
-                    this.yVelocity = 0
-                    this.gravityVelocity = 0
-                    if ((collision.y + collision.height) >= potentialY) {
-                        console.log("Overlap")
-                    } else {
-                        console.log("Non overlap")
-                    }
-                } else if (collision.y > potentialY && (potentialY + this.height) > collision.y) {
-                    console.log("Top collision")
-                    potentialY = collision.y - this.height
-                    this.yVelocity = 0
-                }
-            }
+            
+            
             this.x = potentialX
             this.y = potentialY
         }
