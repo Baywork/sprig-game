@@ -1,19 +1,14 @@
-import type Entity from "game/entities/Entity";
-import type {Menu} from "game/ui/menus/menu";
 import PlayerEntity from "game/entities/player/PlayerEntity";
 import Screen from "game/graphics/Screen"
 import type {WebEngineAPI} from "sprig/web";
 import World from "game/world/World";
 import Camera from "game/camera/Camera";
-import {GrassTile} from "game/body/tiles/GrassTile.ts";
 import {TestMap} from "game/map/TestMap.ts";
 
 export class GameState {
 
-    entities: Entity[]
     player: PlayerEntity
     world: World
-    menus: Menu
     camera: Camera
     screen: Screen
     wHeld: boolean
@@ -31,14 +26,8 @@ export class GameState {
         this.dHeld = false
         this.world = new World(1000, 200, "")
 
-        for (let i = 0; i < this.world.mapWidth; i++) {
-            if (i % this.world.distanceUnitResolution == 0) {
-                this.world.map[i][0].push(new GrassTile(i, 0, this))
-            }
-        }
         this.player = new PlayerEntity(this);
-
-        const map = new TestMap(this)
+        new TestMap(this)
 
 
         this.deltaTime = 0
