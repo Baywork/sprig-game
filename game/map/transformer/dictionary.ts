@@ -1,12 +1,12 @@
-import {GrassBody} from "game/body/platform/GrassBody.ts";
+import {GrassTile} from "game/body/tiles/GrassTile.ts";
 import {Body} from "game/body/Body.ts";
-import {EarthBody} from "game/body/platform/EarthBody.ts";
-import {CloudBody} from "game/body/platform/CloudBody.ts";
+import {EarthTile} from "game/body/tiles/EarthTile.ts";
+import {CloudTile} from "game/body/tiles/CloudTile.ts";
 
 const hexReferenceTable = {
-    "26dc36": GrassBody,
-    "a59041": EarthBody,
-    "e2c1ff": CloudBody
+    "26dc36": GrassTile,
+    "a59041": EarthTile,
+    "e2c1ff": CloudTile
 }
 
 

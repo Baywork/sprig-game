@@ -5,7 +5,7 @@ import Screen from "game/graphics/Screen"
 import type {WebEngineAPI} from "sprig/web";
 import World from "game/world/World";
 import Camera from "game/camera/Camera";
-import {GrassBody} from "game/body/platform/GrassBody.ts";
+import {GrassTile} from "game/body/tiles/GrassTile.ts";
 import {TestMap} from "game/map/TestMap.ts";
 
 export class GameState {
@@ -33,7 +33,7 @@ export class GameState {
 
         for (let i = 0; i < this.world.mapWidth; i++) {
             if (i % this.world.distanceUnitResolution == 0) {
-                this.world.map[i][0].push(new GrassBody(i, 0, this))
+                this.world.map[i][0].push(new GrassTile(i, 0, this))
             }
         }
         this.player = new PlayerEntity(this);
