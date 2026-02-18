@@ -1,4 +1,3 @@
-import {GrassBody} from "game/body/platform/GrassBody.ts";
 import type {GameState} from "game/GameState.ts";
 import {generateBodyFromHex} from "game/map/transformer/transformer.ts";
 

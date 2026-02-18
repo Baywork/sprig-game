@@ -1,5 +1,4 @@
 import type {GameState} from "game/GameState.ts";
-import {Body} from "game/body/Body.ts";
 import {tileHexMap} from "game/map/transformer/dictionary.ts";
 
 const mapKeys = Object.keys(tileHexMap)
