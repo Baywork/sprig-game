@@ -1,7 +1,7 @@
 import type {GameState} from "game/GameState";
 import {Body} from "game/body/Body";
 import World from "game/world/World";
-import {gravityVelocity} from "game/physics/physics.ts";
+import {gravityVelocity} from "game/physics/physics";
 
 export default abstract class Entity extends Body {
     xVelocity: number

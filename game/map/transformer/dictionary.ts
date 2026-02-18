@@ -1,7 +1,7 @@
-import {GrassTile} from "game/body/tiles/GrassTile.ts";
-import {Body} from "game/body/Body.ts";
-import {EarthTile} from "game/body/tiles/EarthTile.ts";
-import {CloudTile} from "game/body/tiles/CloudTile.ts";
+import {GrassTile} from "game/body/tiles/GrassTile";
+import {Body} from "game/body/Body";
+import {EarthTile} from "game/body/tiles/EarthTile";
+import {CloudTile} from "game/body/tiles/CloudTile";
 
 const hexReferenceTable = {
     "26dc36": GrassTile,

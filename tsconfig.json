@@ -1,7 +1,4 @@
 {
-    "extends": [
-        "astro/tsconfigs/base"
-    ],
     "esModuleInterop": true,
     "compilerOptions": {
         "noEmit": false,

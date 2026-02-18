@@ -3,7 +3,7 @@ import Screen from "game/graphics/Screen"
 import type {WebEngineAPI} from "sprig/web";
 import World from "game/world/World";
 import Camera from "game/camera/Camera";
-import {TestMap} from "game/map/TestMap.ts";
+import {TestMap} from "game/map/TestMap";
 
 export class GameState {
 

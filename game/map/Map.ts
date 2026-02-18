@@ -1,5 +1,5 @@
-import type {GameState} from "game/GameState.ts";
-import {generateBodyFromHex} from "game/map/transformer/transformer.ts";
+import type {GameState} from "game/GameState";
+import {generateBodyFromHex} from "game/map/transformer/transformer";
 
 export abstract class Map {
     abstract width: number

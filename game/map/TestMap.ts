@@ -1,5 +1,5 @@
-import {Map} from "./Map.ts"
-import type {GameState} from "game/GameState.ts";
+import {Map} from "./Map"
+import type {GameState} from "game/GameState";
 
 export class TestMap extends Map {
     override contents: string = `26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36 26dc36

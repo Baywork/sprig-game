@@ -1,5 +1,5 @@
 import {transformImagesToStringBitmaps} from "lib/preflight/bitmapHelper";
-import {transformImagesToMaps} from "lib/preflight/mapHelper.ts";
+import {transformImagesToMaps} from "lib/preflight/mapHelper";
 
 function transformSprites() {
     transformImagesToStringBitmaps("assets/sprites", "dist/sprites")

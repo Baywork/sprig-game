@@ -1,5 +1,5 @@
-import type {GameState} from "game/GameState.ts";
-import {tileHexMap} from "game/map/transformer/dictionary.ts";
+import type {GameState} from "game/GameState";
+import {tileHexMap} from "game/map/transformer/dictionary";
 
 const mapKeys = Object.keys(tileHexMap)
 
