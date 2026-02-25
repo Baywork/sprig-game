@@ -5,7 +5,7 @@
     "dev": "npx astro dev",
     "build": "npx astro build",
     "preview": "npx astro preview",
-    "transformSprites": "npx tsx scripts/assets",
+    "transformAssets": "npx tsx scripts/assets",
     "exportGame":  "webpack && node scripts/bundler.cjs"
   },
   "dependencies": {
