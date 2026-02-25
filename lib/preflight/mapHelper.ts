@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import Path from "node:path";
 import {intToRGBA, Jimp} from "jimp";
+import {scanDirectoryRecursive} from "lib/preflight/utils";
 
 
 export async function transformImageToMap(path) {
@@ -27,16 +28,14 @@ function rgbaToHex({r, g, b, a}) {
 }
 
 export async function transformImagesToMaps(src: string, target: string) {
-    const fileNames: string[] = fs.lstatSync(src).isDirectory() ? fs.readdirSync(src) : [Path.basename(src)]
-    const dirPath = fs.lstatSync(src).isDirectory() ? src : Path.dirname(src)
+    const fileNames: string[] = fs.lstatSync(src).isDirectory() ? scanDirectoryRecursive(src) : [Path.basename(src)]
 
     if (!fs.existsSync(Path.dirname(target))) fs.mkdirSync(Path.dirname(target))
     if (!fs.existsSync(target)) fs.mkdirSync(target)
-
     for (const fileName of fileNames) {
-        const path = Path.join(dirPath, fileName)
-        const converted = await transformImageToMap(path)
+        const converted = await transformImageToMap(fileName)
+        if (!fs.existsSync(Path.dirname(Path.resolve(fileName).replaceAll(Path.resolve(src), Path.resolve(target))))) fs.mkdirSync(Path.dirname(Path.resolve(fileName).replaceAll(Path.resolve(src), Path.resolve(target))))
 
-        fs.writeFileSync(Path.join(target, `${fileName.split(".").slice(0, -1).join(".")}.txt`), converted)
+        fs.writeFileSync(Path.join(Path.dirname(Path.resolve(fileName).replaceAll(Path.resolve(src), Path.resolve(target))), `${Path.basename(fileName).split(".").slice(0, -1).join(".")}.txt`), converted)
     }
 }
