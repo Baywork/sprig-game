@@ -22,9 +22,8 @@ export default class Camera {
         const heightScalar = screen.height / this.height
         const world = gameState.world
 
-        if (gameState.player.x && (gameState.player.x - this.xPos > 120) || gameState.player.x - this.xPos < 0) {
-            const sign = gameState.player.x > this.xPos ? 1 : -1
-            this.xPos += sign * 2
+        if (gameState.player.x && Math.abs(gameState.player.x - this.xPos - Math.floor(this.width/2)) > 40) {
+            this.xPos = gameState.player.x - Math.floor(this.width/2)
             if (this.xPos < gameState.world.bufferSize) this.xPos = gameState.world.bufferSize
         }
 
